@@ -10,9 +10,9 @@ a4_height = 297 # millimetres
 point = 25.4/72
 
 top_margin = 5 # millimetres
-bottom_margin = 5 # millimetres
-left_margin = 5 # millimetres
-right_margin = 5 # millimetres
+bottom_margin = top_margin # millimetres
+left_margin = 7 # millimetres
+right_margin = left_margin # millimetres
     
 
 def main():
