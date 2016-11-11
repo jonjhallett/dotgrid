@@ -7,7 +7,7 @@ To generate 5mm, 7.5mm, 8mm and 10mm dotgrids, run
 bash generate_dotgrid
 ```
 
-To generate a PDF for an arbitrary grid size, use the --gridsize command line option for `dotgrid.py`, with a grid size in mllimetres. For example, for a 12mm grid use
+To generate a PDF for an arbitrary grid size, use the `--gridsize` command line option for `dotgrid.py`, with a grid size in mllimetres. For example, for a 12mm grid use
 ```
 python3 dotgrid.py --gridsize=12 | ps2pdf - >dotgrid.pdf
 ```
