@@ -17,16 +17,11 @@ right_margin = left_margin # millimetres
 
 def main():
     set_grid_size_from_argument_or_default()
-    print_to_stderr("target grid size: {}".format(grid_size))
-    
     x_grid_size = fit_grid_size_to_printable_length(a4_width, left_margin,
                                                               right_margin)
-    print_to_stderr("    fitted x grid size: {}mm".format(x_grid_size))
-    
     y_grid_size = fit_grid_size_to_printable_length(a4_height, bottom_margin,
                                                                top_margin)
-    print_to_stderr("    fitted y grid size: {}mm".format(y_grid_size))
-
+    print_grid_size_fitting_summary(x_grid_size, y_grid_size)
     print(postscript_header(grid_size))
     print(postscript_set_page_size(a4_width, a4_height))
     for page_number in [1, 2]:
@@ -43,6 +38,12 @@ def set_grid_size_from_argument_or_default():
     args = parser.parse_args()
     
     grid_size = args.grid_size
+
+
+def print_grid_size_fitting_summary(x_grid_size, y_grid_size):
+    print_to_stderr("target grid size: {}".format(grid_size))
+    print_to_stderr("    fitted x grid size: {}mm".format(x_grid_size))
+    print_to_stderr("    fitted y grid size: {}mm".format(y_grid_size))
 
 
 def postscript_header(grid_size):
