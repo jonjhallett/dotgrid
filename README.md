@@ -9,5 +9,5 @@ bash generate_dotgrid
 
 To generate a PDF for an arbitrary grid size, run
 ```bash
-python3 dotgrid.py --grid-size=<grid size in mm> | ps2pdf - >dotgrid.pdf
+python3 dotgrid.py --gridsize=<grid size in mm> | ps2pdf - >dotgrid.pdf
 ```
