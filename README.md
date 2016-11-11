@@ -12,6 +12,4 @@ To generate a PDF for an arbitrary grid size, use the --gridsize command line op
 python3 dotgrid.py --gridsize=12 | ps2pdf - >dotgrid.pdf
 ```
 
-`dotgrid.py`, outputs PostScript with a PageSize set for A4.
-
 The script will modify the grid size to ensure that an exact number of grid squares are printed between the margins.
