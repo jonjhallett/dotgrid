@@ -62,8 +62,8 @@ def postscript_header(grid_size):
 
 
 def postscript_set_page_size(width, height):
-    width_in_points = round(width / point)
-    height_in_points = round(height / point)
+    width_in_points = int(round(width / point))
+    height_in_points = int(round(height / point))
 
     postscript_set_page_size = """\
 << /PageSize [{width} {height}] >> setpagedevice
