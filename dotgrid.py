@@ -74,8 +74,12 @@ def postscript_set_page_size(width, height):
 def print_postscript_dotgrid_page(x_grid_size, y_grid_size):
     print("0.8 setgray")
 
-    for x in frange(left_margin, page_width - right_margin + 1, x_grid_size):
-        for y in frange(bottom_margin, page_height - top_margin + 1, y_grid_size):
+    for x in frange(left_margin,
+		    page_width - right_margin + 1,
+		    x_grid_size):
+        for y in frange(bottom_margin,
+		       	page_height - top_margin + 1,
+		       	y_grid_size):
             x_in_points = truncate_to_3_decimal_points(x / point)
             y_in_points = truncate_to_3_decimal_points(y / point)
             print(postscript_draw_dot(x_in_points, y_in_points))
