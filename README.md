@@ -12,4 +12,4 @@ To generate a PDF for an arbitrary grid size, use the `--gridsize` command line 
 python dotgrid.py --gridsize=12 | ps2pdf - >dotgrid.pdf
 ```
 
-The script will modify the grid size to ensure that an exact number of grid squares are printed between the margins.
+The script will modify the grid size to ensure an exact number of grid squares are printed between the margins.
