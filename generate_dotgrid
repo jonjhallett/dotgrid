@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for gridsize in 5 7.5 8 10; do
+for gridsize in 5 6 7.5 8 10; do
     filename="a4 ${gridsize}mm dotted grid double sided.pdf"
     python3 dotgrid.py --gridsize=$gridsize | ps2pdf - >"$filename"
 done
