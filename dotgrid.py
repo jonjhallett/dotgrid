@@ -9,7 +9,7 @@ default_grid_size = 8.0  # millimetres
 a4_width = 210  # millimetres
 a4_height = 297  # millimetres
 
-point = 25.4/72
+point = 25.4/72  # millimetres
 
 page_width = a4_width
 page_height = a4_height
