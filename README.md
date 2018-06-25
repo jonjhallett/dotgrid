@@ -2,7 +2,7 @@
 
 Generate PDFs for printing dotgrid paper in a variety of grid sizes. The PDF is intended to be printed doublesided on A4 paper.
 
-To generate 5mm, 7.5mm, 8mm and 10mm dotgrids, run
+To generate 5mm, 6mm, 7.5mm, 8mm and 10mm dotgrids, run
 ```
 bash generate_dotgrid
 ```
