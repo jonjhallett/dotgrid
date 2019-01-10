@@ -48,18 +48,18 @@ def set_grid_size_from_argument_or_default():
 
 
 def print_grid_size_fitting_summary(x_grid_size, y_grid_size):
-    print_to_stderr("target grid size: {}".format(grid_size))
-    print_to_stderr("    fitted x grid size: {}mm".format(x_grid_size))
-    print_to_stderr("    fitted y grid size: {}mm".format(y_grid_size))
+    print_to_stderr(f'target grid size: {grid_size}')
+    print_to_stderr(f'    fitted x grid size: {x_grid_size}mm')
+    print_to_stderr(f'    fitted y grid size: {y_grid_size}mm')
 
 
 def postscript_header(grid_size):
-    postscript_header = """\
+    postscript_header = f"""\
 %!PS-Adobe-3.0
 %%Creator: dotgrid.py
 %%Title: A4 {grid_size}mm dotted grid double sided
 %%EndComments
-""".format(grid_size=grid_size)
+"""
     return postscript_header
 
 
@@ -67,9 +67,9 @@ def postscript_set_page_size(width, height):
     width_in_points = int(round(width / point))
     height_in_points = int(round(height / point))
 
-    postscript_set_page_size = """\
-<< /PageSize [{width} {height}] >> setpagedevice
-""".format(width=width_in_points, height=height_in_points)
+    postscript_set_page_size = f"""\
+<< /PageSize [{width_in_points} {height_in_points}] >> setpagedevice
+"""
     return postscript_set_page_size
 
 
@@ -90,9 +90,9 @@ def print_postscript_dotgrid_page(x_grid_size, y_grid_size):
 
 
 def postscript_draw_dot(x_in_points, y_in_points):
-    postscript_draw_dot = """\
-{x} {y} 0.75 0 360 arc closepath fill\
-""".format(x=x_in_points, y=y_in_points)
+    postscript_draw_dot = f"""\
+{x_in_points} {y_in_points} 0.75 0 360 arc closepath fill\
+"""
     return postscript_draw_dot
 
 
@@ -105,7 +105,7 @@ def fit_grid_size_to_printable_length(length, margin1, margin2):
 
 
 def truncate_to_3_decimal_points(f):
-    f_truncated_to_3_decimal_places = "{:.3f}".format(f)
+    f_truncated_to_3_decimal_places = f"{f:.3f}"
     return f_truncated_to_3_decimal_places
 
 
