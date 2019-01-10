@@ -103,9 +103,9 @@ def fit_grid_size_to_printable_length(length, margin1, margin2):
     return fitted_grid_size
 
 
-def truncate_to_3_decimal_points(f):
-    f_truncated_to_3_decimal_places = f'{f:.3f}'
-    return f_truncated_to_3_decimal_places
+def truncate_to_3_decimal_points(x):
+    x_truncated_to_3_decimal_places = f'{x:.3f}'
+    return x_truncated_to_3_decimal_places
 
 
 def frange(start, finish, increment):
