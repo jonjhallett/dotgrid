@@ -2,6 +2,7 @@
 
 import sys
 import argparse
+from numpy import arange
 
 default_grid_size = 8.0  # millimetres
 
@@ -75,10 +76,10 @@ def postscript_set_page_size(width, height):
 def print_postscript_dotgrid_page(x_grid_size, y_grid_size):
     print('0.8 setgray')
 
-    for x in frange(left_margin,
+    for x in arange(left_margin,
                     page_width - right_margin + 1,
                     x_grid_size):
-        for y in frange(bottom_margin,
+        for y in arange(bottom_margin,
                         page_height - top_margin + 1,
                         y_grid_size):
             x_in_points = truncate_to_3_decimal_points(x / point)
@@ -106,13 +107,6 @@ def fit_grid_size_to_printable_length(length, margin1, margin2):
 def truncate_to_3_decimal_points(x):
     x_truncated_to_3_decimal_places = f'{x:.3f}'
     return x_truncated_to_3_decimal_places
-
-
-def frange(start, finish, increment):
-    x = start
-    while x < finish:
-        yield x
-        x += increment
 
 
 def print_to_stderr(*args, **opts):
