@@ -50,9 +50,9 @@ def set_grid_size_from_argument_or_default():
 
 
 def print_grid_size_fitting_summary(x_grid_size, y_grid_size):
-    print_to_stderr(f'target grid size: {grid_size}')
-    print_to_stderr(f'    fitted x grid size: {x_grid_size}mm')
-    print_to_stderr(f'    fitted y grid size: {y_grid_size}mm')
+    sys.stderr.write(f'target grid size: {grid_size}\n')
+    sys.stderr.write(f'    fitted x grid size: {x_grid_size}mm\n')
+    sys.stderr.write(f'    fitted y grid size: {y_grid_size}mm\n')
 
 
 def postscript_header(grid_size):
@@ -109,11 +109,6 @@ def fit_grid_size_to_printable_length(length, margin1, margin2):
 def truncate_to_3_decimal_points(x):
     x_truncated_to_3_decimal_places = f'{x:.3f}'
     return x_truncated_to_3_decimal_places
-
-
-def print_to_stderr(*args, **opts):
-    opts['file'] = sys.stderr
-    print(*args, **opts)
 
 
 main()
