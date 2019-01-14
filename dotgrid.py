@@ -2,7 +2,7 @@
 
 import sys
 import argparse
-from numpy import arange
+from numpy import linspace
 
 default_grid_size = 8.0  # millimetres
 
@@ -22,17 +22,16 @@ right_margin = left_margin  # millimetres
 
 def main():
     set_grid_size_from_argument_or_default()
-    x_grid_size = fit_grid_size_to_printable_length(page_width,
-                                                    left_margin,
-                                                    right_margin)
-    y_grid_size = fit_grid_size_to_printable_length(page_height,
-                                                    bottom_margin,
-                                                    top_margin)
-    print_grid_size_fitting_summary(x_grid_size, y_grid_size)
+    x_number_of_dots = fit_grid_size_to_printable_length(page_width,
+                                                         left_margin,
+                                                         right_margin)
+    y_number_of_dots = fit_grid_size_to_printable_length(page_height,
+                                                         bottom_margin,
+                                                         top_margin)
     print(postscript_header(grid_size))
     print(postscript_set_page_size(page_width, page_height))
     for page_number in [1, 2]:
-        print_postscript_dotgrid_page(x_grid_size, y_grid_size)
+        print_postscript_dotgrid_page(x_number_of_dots, y_number_of_dots)
 
 
 def set_grid_size_from_argument_or_default():
@@ -45,12 +44,6 @@ def set_grid_size_from_argument_or_default():
     args = parser.parse_args()
 
     grid_size = args.grid_size
-
-
-def print_grid_size_fitting_summary(x_grid_size, y_grid_size):
-    print_to_stderr(f'target grid size: {grid_size}')
-    print_to_stderr(f'    fitted x grid size: {x_grid_size}mm')
-    print_to_stderr(f'    fitted y grid size: {y_grid_size}mm')
 
 
 def postscript_header(grid_size):
@@ -73,15 +66,15 @@ def postscript_set_page_size(width, height):
     return postscript_set_page_size
 
 
-def print_postscript_dotgrid_page(x_grid_size, y_grid_size):
+def print_postscript_dotgrid_page(x_number_of_dots, y_number_of_dots):
     print('0.8 setgray')
 
-    for x in arange(left_margin,
-                    page_width - right_margin + 1,
-                    x_grid_size):
-        for y in arange(bottom_margin,
-                        page_height - top_margin + 1,
-                        y_grid_size):
+    for x in linspace(left_margin,
+                    page_width - right_margin,
+                    x_number_of_dots):
+        for y in linspace(bottom_margin,
+                        page_height - top_margin,
+                        y_number_of_dots):
             x_in_points = truncate_to_3_decimal_points(x / point)
             y_in_points = truncate_to_3_decimal_points(y / point)
             print(postscript_draw_dot(x_in_points, y_in_points))
@@ -100,8 +93,7 @@ def fit_grid_size_to_printable_length(length, margin1, margin2):
     printable_length = length - margin1 - margin2
     number_of_dots = printable_length / grid_size
     fitted_number_of_dots = round(number_of_dots)
-    fitted_grid_size = printable_length / fitted_number_of_dots
-    return fitted_grid_size
+    return fitted_number_of_dots
 
 
 def truncate_to_3_decimal_points(x):
