@@ -1,4 +1,17 @@
 #!/usr/bin/python3
+"""Generate PostScript to print dotgrid paper.
+
+Generate PostScript which will print a dotgrid on A4 paper.
+
+By default, an 8mm dotgrid is generated. The size can be overridden with
+the --gridsize option.
+
+The PostScript output can be piped into ps2pdf to generate PDF.
+
+For example:
+
+    python3 dotgrid.py --gridsize=8 | ps2pdf - >8mm-dotgrid.pdf
+"""
 
 import sys
 import argparse
@@ -43,7 +56,8 @@ def set_grid_size_from_argument_or_default():
     parser = argparse.ArgumentParser()
     parser.add_argument('--gridsize', dest='grid_size',
                         default=default_grid_size,
-                        type=float)
+                        type=float,
+                        help='set the gridsize in millimetres')
     args = parser.parse_args()
 
     grid_size = args.grid_size
@@ -111,4 +125,5 @@ def truncate_to_3_decimal_points(x):
     return x_truncated_to_3_decimal_places
 
 
-main()
+if __name__ == "__main__":
+    main()
