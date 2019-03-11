@@ -63,6 +63,14 @@ def set_grid_size_from_argument_or_default():
     grid_size = args.grid_size
 
 
+def fit_grid_size_to_printable_length(length, margin1, margin2):
+    printable_length = length - margin1 - margin2
+    number_of_dots = printable_length / grid_size
+    fitted_number_of_dots = round(number_of_dots)
+    fitted_grid_size = printable_length / fitted_number_of_dots
+    return (fitted_number_of_dots, fitted_grid_size)
+
+
 def print_grid_size_fitting_summary(x_grid_size, y_grid_size):
     sys.stderr.write(f'target grid size: {grid_size}\n')
     sys.stderr.write(f'    fitted x grid size: {x_grid_size}mm\n')
@@ -116,14 +124,6 @@ def in_points(x, ndigits=None):
     x_in_points = x / point
     rounded_x_in_points = round(x_in_points, ndigits)
     return rounded_x_in_points
-
-
-def fit_grid_size_to_printable_length(length, margin1, margin2):
-    printable_length = length - margin1 - margin2
-    number_of_dots = printable_length / grid_size
-    fitted_number_of_dots = round(number_of_dots)
-    fitted_grid_size = printable_length / fitted_number_of_dots
-    return (fitted_number_of_dots, fitted_grid_size)
 
 
 if __name__ == "__main__":
