@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Generate PostScript to print dotgrid paper.
 
-Generate PostScript which will print a dotgrid on A4 paper.
+Generate PostScript which will print a dotgrid on two sides of A4 paper.
 
 By default, an 8mm dotgrid is generated. The size can be overridden with
 the --gridsize option.
