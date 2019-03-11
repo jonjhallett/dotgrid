@@ -98,15 +98,15 @@ def print_postscript_dotgrid_page(x_number_of_dots, y_number_of_dots):
         for y in linspace(bottom_margin,
                           page_height - top_margin,
                           y_number_of_dots):
-            x_in_points = x / point
-            y_in_points = y / point
-            print(postscript_draw_dot(x_in_points, y_in_points))
+            print(postscript_draw_dot(x, y))
 
     print('showpage')
 
 
-def postscript_draw_dot(x_in_points, y_in_points):
+def postscript_draw_dot(x, y):
+    x_in_points = x / point
     rounded_x = round(x_in_points, 3)
+    y_in_points = y / point
     rounded_y = round(y_in_points, 3)
     postscript_draw_dot = f'''\
 {rounded_x} {rounded_y} 0.75 0 360 arc closepath fill\
