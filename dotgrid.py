@@ -114,8 +114,8 @@ def postscript_draw_dot(x, y):
 
 def in_points(x, ndigits=None):
     x_in_points = x / point
-    rounded_x = round(x_in_points, ndigits)
-    return rounded_x
+    rounded_x_in_points = round(x_in_points, ndigits)
+    return rounded_x_in_points
 
 
 def fit_grid_size_to_printable_length(length, margin1, margin2):
