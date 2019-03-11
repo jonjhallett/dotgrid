@@ -98,8 +98,8 @@ def print_postscript_dotgrid_page(x_number_of_dots, y_number_of_dots):
         for y in linspace(bottom_margin,
                           page_height - top_margin,
                           y_number_of_dots):
-            x_in_points = truncate_to_3_decimal_points(x / point)
-            y_in_points = truncate_to_3_decimal_points(y / point)
+            x_in_points = round(x / point, 3)
+            y_in_points = round(y / point, 3)
             print(postscript_draw_dot(x_in_points, y_in_points))
 
     print('showpage')
@@ -118,11 +118,6 @@ def fit_grid_size_to_printable_length(length, margin1, margin2):
     fitted_number_of_dots = round(number_of_dots)
     fitted_grid_size = printable_length / fitted_number_of_dots
     return (fitted_number_of_dots, fitted_grid_size)
-
-
-def truncate_to_3_decimal_points(x):
-    x_truncated_to_3_decimal_places = f'{x:.3f}'
-    return x_truncated_to_3_decimal_places
 
 
 if __name__ == "__main__":
