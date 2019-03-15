@@ -92,7 +92,7 @@ def postscript_set_page_size(width, height):
     height_in_points = in_points(height)
 
     postscript_set_page_size = f'''\
-<< /PageSize [{width_in_points} {height_in_points}] >> setpagedevice
+<< /PageSize [{width_in_points:.0f} {height_in_points:.0f}] >> setpagedevice
 '''
     return postscript_set_page_size
 
@@ -112,18 +112,17 @@ def print_postscript_dotgrid_page(x_number_of_dots, y_number_of_dots):
 
 
 def postscript_draw_dot(x, y):
-    x_in_points = in_points(x, ndigits=3)
-    y_in_points = in_points(y, ndigits=3)
+    x_in_points = in_points(x)
+    y_in_points = in_points(y)
     postscript_draw_dot = f'''\
-{x_in_points} {y_in_points} 0.75 0 360 arc closepath fill\
+{x_in_points:.2f} {y_in_points:.2f} 0.75 0 360 arc closepath fill\
 '''
     return postscript_draw_dot
 
 
-def in_points(x, ndigits=None):
+def in_points(x):
     x_in_points = x / point
-    rounded_x_in_points = round(x_in_points, ndigits)
-    return rounded_x_in_points
+    return x_in_points
 
 
 if __name__ == "__main__":
